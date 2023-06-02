@@ -1,0 +1,314 @@
+/* Reset /frontend/assets/css */
+html, body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+span, b, p, a, ul, li,
+button, input, label,
+table, tr , th, td {
+    font-family: sans-serif;
+}
+h1 {
+    font-size: 52px;
+}
+h2 {
+    font-size: 32px;
+}
+h3 {
+    font-size: 24px;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Form */
+
+form {
+    margin: 0;
+}
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=file] {
+    border: none;
+    border: 2px solid #1e1e1e;
+    border-radius: 8px;
+    margin: 8px 0 16px 0;
+    padding: 12px 2%;
+    width: 94%;  
+}
+input[type=submit],
+button {
+    background-color: #1e1e1e;
+    border: none;
+    color: #fff;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.loginForm {
+    margin: 0 auto;
+    max-width: 640px;
+}
+.loginForm .formRow:last-child {
+    margin-top: 16px;
+}
+.loginForm .formInput {
+    width: 100% !important;
+}
+.formRow {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+}
+.formInput {
+    width: 50%;
+}
+.switch {
+    display: inline-block;
+    height: 32px;
+    position: relative;
+    width: 60px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}  
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 24px;
+    left: 4px;
+    position: absolute;
+    -webkit-transition: .4s;
+    transition: .4s;
+    width: 24px;
+}  
+input:checked + .slider {
+    background-color: #1e1e1e;
+}  
+input:focus + .slider {
+    box-shadow: 0 0 1px #e1e1e1;
+}  
+input:checked + .slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 32px;
+}  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Header & navbar */
+.header {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.navbar {
+    background-color: #1e1e1e;
+    border-bottom: 2px solid #1e1e1e;
+    display: grid;
+    grid-auto-flow: column;
+    margin: 0;
+    padding: 8px 0;
+    text-align: center;
+}
+.navbar li {
+    display: inline-block;
+    margin: 0 8px;
+}
+.navbar li a {
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    background-color: #1e1e1e;
+    border-top: 2px solid #1e1e1e;
+    bottom: 0;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+.footer p {
+    color: #fff;
+    font-size: 12px;
+    margin: 8px 0;
+}
+
+
+/* Body */
+.container {
+    height: fit-content;
+    margin: 0 auto;
+    padding: 64px;    
+    width: 1024px;
+}
+
+.title {
+    margin: 64px 0;
+}
+.profile {
+    margin: 64px 0;
+}
+
+/* Profile */
+.profile {
+    align-items: top;
+    display: flex;
+    gap: 64px;
+    justify-content: space-between;
+}
+
+
+
+/* ====================
+=======================
+======== Coach ========
+=======================
+==================== */
+
+/* Coach dashboard */
+
+.trainees table,
+.coaches table {
+    width: 100%;
+}
+.trainees table,
+.trainees th,
+.trainees td,
+.coaches table,
+.coaches th,
+.coaches td {
+    border: 1px solid #1e1e1e;
+    border-collapse: collapse;
+}
+.trainees th,
+.trainees td,
+.coaches th,
+.coaches td {
+    font-size: 12px;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Coach registration */
+.coash_registration {
+    border-bottom: 2px solid #1e1e1e;
+    padding: 0 0 32px 0;
+}
+.clarification {
+    margin: 64px 0 0 0;
+}
+
+/* 
+* Edit Member Form in Dashboard
+*/
+
+/* The popup form - hidden by default */
+.editPopupForm {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+.editPopupContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 0;
+    padding: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 640px;
+}
+
+.editPopupForm .formRow {
+    margin: 32px 0 0 0;
+}
+
+
+
+/* ======================
+=========================
+======== Members ========
+=========================
+====================== */
+
+/* Member dashboard */
+
+.events table {
+    width: 100%;
+}
+.events table,
+.events th,
+.events td {
+    border: 1px solid #1e1e1e;
+    border-collapse: collapse;
+}
+.events th,
+.events td {
+    font-size: 12px;
+    padding: 8px;
+    text-align: center;
+}
+
+.membersActions {
+    display: inline;
+}
+
+/* Coach registration */
+.member_registration {
+    border-bottom: 2px solid #1e1e1e;
+    padding: 0 0 32px 0;
+}
+
+/* Member's event page */
+.addEventsForm,
+.membersActions {
+    margin: 128px 0 64px 0;
+}
+.eventsActions input[type=submit],
+.membersActions input[type=submit],
+.editPopupForm input[type=submit],
+.eventsActions button,
+.membersActions button,
+.editPopupForm button {
+    font-size: 12px;
+    padding: 8px 16px;
+    margin: 0;
+}
