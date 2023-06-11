@@ -38,7 +38,10 @@ input[type=text],
 input[type=password],
 input[type=number],
 input[type=email],
-input[type=file] {
+input[type=date],
+input[type=file],
+fieldset,
+select {
     border: none;
     border: 2px solid #1e1e1e;
     border-radius: 8px;

@@ -60,29 +60,72 @@ endif;
         <h3>
           <?php echo $member_row['firstname'] ." ". $member_row['lastname']; ?>
         </h3>
-        <p>
-          <strong>Mobile number: </strong>
-          <a href="tel:<?php echo $member_row['mobile']; ?>"
-              title="<?php echo $member_row['firstname'] ." ". $member_row['lastname']; ?> mobile number">
-            <?php echo $member_row['mobile']; ?>
-          </a>
-        </p>
-        <p>
-          <strong>Email: </strong>
-          <a href="mailto:<?php echo $member_row['email']; ?>"
-              title="<?php echo $member_row['firstname'] ." ". $member_row['lastname']; ?> email">
-          <?php echo $member_row['email']; ?>
-          </a>
-        </p>
-        <p>
-          <strong>Joined date: </strong><?php echo $member_row['createdate']; ?>
-        </p>
-        <p>
-          <strong>Membership start date: </strong><?php echo $member_row['startdate']; ?>
-        </p>
-        <p>
-          <strong>Membership end date: </strong><?php echo $member_row['enddate']; ?>
-        </p>
+        <table>
+          <tr>
+            <td>
+              <strong>Birthday: </strong>
+              <?php 
+                $birthday = $member_row['birthday'];
+                $age = (date('Y') - date('Y',strtotime($birthday)));
+                echo $birthday.' ('.$age.')'; 
+              ?>
+            </td>
+            <td>
+              <strong>Status: </strong>
+              <?php 
+              if ($member_row['status'] == 'active') :
+                echo '<strong style="color: green">'.$member_row['status']. '</strong>';
+              elseif ($member_row['status'] == 'inactive') :
+                  echo '<strong style="color: red">'.$member_row['status']. '</strong>';
+              endif;
+              ?>              
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Mobile number: </strong>
+              <a href="tel:<?php echo $member_row['mobile']; ?>"
+                  title="<?php echo $member_row['firstname'] ." ". $member_row['lastname']; ?> mobile number">
+                <?php echo $member_row['mobile']; ?>
+              </a>
+            </td>
+            <td>
+              <strong>Joined date: </strong><?php echo $member_row['createdate']; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Email: </strong>
+              <a href="mailto:<?php echo $member_row['email']; ?>"
+                  title="<?php echo $member_row['firstname'] ." ". $member_row['lastname']; ?> email">
+              <?php echo $member_row['email']; ?>
+              </a>
+            </td>
+            <td>
+              <strong>Membership start date: </strong><?php echo $member_row['startdate']; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>City: </strong><?php echo $member_row['city'].' ('.$member_row['timezone'].')'; ?>
+            </td>
+            <td>
+              <strong>Membership end date: </strong><?php echo $member_row['enddate']; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Current Time: </strong>
+              <?php 
+              $timezone = $member_row['timezone'];
+              $path = "https://timeapi.io/api/Time/current/zone?timeZone=".$timezone;
+              $time = file_get_contents($path);
+              $response = json_decode($time, true);
+              echo $response['time'];
+              ?>
+            </td>                        
+          </tr>
+        </table>
       </div>
       <img src="../img/loujain_profilepicture.jpg" height="240px" alt="<?php echo $firstname ." ". $lastname; ?> profile picture">
     </section>

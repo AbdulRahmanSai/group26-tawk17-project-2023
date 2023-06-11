@@ -26,8 +26,11 @@ if ($user_type == 'member') :
         $coach_id = $row['coach_id'];
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
-        $mobile = $row['mobile'];
         $email = $row['email'];
+        $mobile = $row['mobile'];
+        $gender = $_POST['gender'];
+        $birthday = $_POST['birthday'];
+        $city = $_POST['city'];
         $createdate = $row['createdate'];
         $status = $row['status'];
         $startdate = $row['startdate'];
@@ -51,8 +54,11 @@ elseif ($user_type == 'coach') :
         $coach_id = $row['coach_id'];
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
-        $mobile = $row['mobile'];
         $email = $row['email'];
+        $mobile = $row['mobile'];
+        $gender = $_POST['gender'];
+        $birthday = $_POST['birthday'];
+        $city = $_POST['city'];
         $createdate = $row['createdate'];
         $status = $row['status'];
         $startdate = $row['startdate'];
@@ -72,7 +78,7 @@ endif;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title><?php echo $row['firstname'].' '.$row['lastn´name']; ?>'s Profile</title>
     <link rel="stylesheet" href="http://<?php echo $_SERVER["SERVER_NAME"]; ?>/app/assets/css/style.css">
 </head>
 <body>
@@ -102,15 +108,23 @@ endif;
                         <label for="lastname">Last name</label>
                         <input type="text" name="lastname" value="<?php echo $row['lastname']; ?>" disabled>
                     </div>
-                </div>
-                <div class="formRow">
                     <div class="formInput">
                         <label for="email">Email</label>
                         <input type="email" name="email" value="<?php echo $row['email']; ?>" disabled>
                     </div>
+                </div>
+                <div class="formRow">                    
                     <div class="formInput">
                         <label for="mobile">Mobile number</label>
                         <input type="text" name="mobile" value="<?php echo $row['mobile']; ?>">
+                    </div>
+                    <div class="formInput">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" name="birthday" value="<?php echo $row['birthday']; ?>" disabled>
+                    </div>
+                    <div class="formInput">
+                        <label for="city">City</label>
+                        <input type="text" name="city" value="<?php echo $row['city']; ?>" disabled>
                     </div>
                 </div>
                 <div class="formRow">

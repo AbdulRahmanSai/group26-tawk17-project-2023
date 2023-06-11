@@ -27,6 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") :
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
+        $gender = $_POST['gender'];
+        $birthday = $_POST['birthday'];
+        $city = $_POST['city'];
+        $timezone = $_POST['timezone'];
         $status = "inactive";
         $type = "standard";
         $startdate = date('Y-m-d');
@@ -114,8 +118,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") :
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
                 /* Add coach to datebase */
-                $sql = "INSERT INTO coaches (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `mobile`, `createdate`, `status`, `type`, `startdate`, `enddate`, `profileimage`)
-                        VALUES (NULL, '$username', '$hash', '$firstname', '$lastname', '$email', '$mobile', current_timestamp(), '$status', '$type', '$startdate', '$enddate', '')";
+                $sql = "INSERT INTO coaches (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `mobile`, `gender`, `birthday`, `city`, `timezone`, `createdate`, `status`, `type`, `startdate`, `enddate`, `profileimage`)
+                        VALUES (NULL, '$username', '$hash', '$firstname', '$lastname', '$email', '$mobile', '$gender', '$birthday', '$city', '$timezone', current_timestamp(), '$status', '$type', '$startdate', '$enddate', '')";
                     
                 if ($conn->query($sql) === TRUE) :
                     echo "Coach created successfully";
@@ -143,6 +147,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") :
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
+        $gender = $_POST['gender'];
+        $birthday = $_POST['birthday'];
+        $city = $_POST['city'];
+        $timezone = $_POST['timezone'];
         $status = "active";
         $startdate = date('Y-m-d');
         $enddate = date('Y-m-d', strtotime('+1 year'));
@@ -183,8 +191,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") :
                     $hash = password_hash($password, PASSWORD_DEFAULT);
 
                     // Add user to datebase
-                    $user_sql = "INSERT INTO users (`user_id`, `coach_id`, `username`, `password`, `role`, `firstname`, `lastname`, `email`, `mobile`, `createdate`, `status`, `startdate`, `enddate`)
-                            VALUES (NULL, '$coach_id', '$username', '$hash', '$role', '$firstname', '$lastname', '$email', '$mobile', current_timestamp(), '$status', '$startdate', '$enddate')";
+                    $user_sql = "INSERT INTO users (`user_id`, `coach_id`, `username`, `password`, `role`, `firstname`, `lastname`, `email`, `mobile`, `gender`, `birthday`, `city`, `timezone`, `createdate`, `status`, `startdate`, `enddate`)
+                            VALUES (NULL, '$coach_id', '$username', '$hash', '$role', '$firstname', '$lastname', '$email', '$mobile', '$gender', '$birthday', '$city', '$timezone', current_timestamp(), '$status', '$startdate', '$enddate')";
                                 
                     if ($conn->query($user_sql) === TRUE) :
                         // Set session variable

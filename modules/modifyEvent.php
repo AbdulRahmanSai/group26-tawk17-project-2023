@@ -71,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") :
         // Perform the Update operation
         $sql = "UPDATE events SET title = '$title', description = '$description'  WHERE id = $event_id";
         $result = mysqli_query($conn, $sql);
-        echo " test";
 
         if ($result) :
             // updation successful

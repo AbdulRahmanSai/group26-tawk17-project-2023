@@ -5,7 +5,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 // Require Login Validation
 require_once $_SERVER['DOCUMENT_ROOT'] . '/modules/validateLogin.php';
 
-
 // Get session variables
 $coach_id = $_SESSION['id'];
 $username = $_SESSION['username'];
@@ -19,9 +18,6 @@ $coach_row = mysqli_fetch_assoc($coach_result);
 // Get Coach variables
 $firstname = $coach_row['firstname'];
 $lastname = $coach_row['lastname'];
-$mobile = $coach_row['mobile'];
-$email = $coach_row['email'];
-$joined_date = $coach_row['createdate'];
 
 // Get trainees
 $sql = "SELECT * FROM users WHERE coach_id='$coach_id'";
@@ -50,7 +46,7 @@ $change_result = mysqli_query($conn, $change_sql);
   <main class="container">
 
     <section class="title">
-      <h1><?php echo $firstname; ?>'s dashboard</h2>
+      <h1><?php echo $firstname.' '.$lastname; ?>'s dashboard</h2>
     </section>   
 
     <section class="trainees">
@@ -59,12 +55,12 @@ $change_result = mysqli_query($conn, $change_sql);
         <thead>
           <tr>
             <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Full Name</th>
             <th>Email</th>
-            <th>Creation date</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Age</th>
             <th>Status</th>
-            <th>Membership<br>Start date</th>
             <th>Membership<br>End date</th>
             <th>Actions</th>
           </tr>
@@ -80,14 +76,8 @@ $change_result = mysqli_query($conn, $change_sql);
               </td>
               <td>
                 <a href="member.php?member_id=<?php echo $row['user_id']; ?>"
-                  title="<?php echo $row['firstname']; ?>">
-                  <?php echo $row['firstname']; ?>
-                </a>
-              </td>
-              <td>
-                <a href="member.php?member_id=<?php echo $row['user_id']; ?>"
-                  title="<?php echo $row['lastname']; ?>">
-                  <?php echo $row['lastname']; ?>
+                  title="<?php echo $row['firstname'].' '.$row['lastname']; ?>">
+                  <?php echo $row['firstname'].' '. $row['lastname']; ?>
                 </a>
               </td>
               <td>
@@ -96,18 +86,30 @@ $change_result = mysqli_query($conn, $change_sql);
                   <?php echo $row['email']; ?>
                 </a>
               </td>
-              <td>                 
-                <?php echo $row['createdate']; ?>
+              <td>
+                <a href="tel:<?php echo $row['mobile']; ?>"
+                  title="<?php echo $row['firstname']." ".$row['lastname']; ?> mobile number">
+                  <?php echo $row['mobile']; ?>
+                </a>
               </td>
-              <td>                 
-                <?php echo $row['status']; ?>
+              <td><?php echo $row['gender']; ?></td>
+              <td>
+                <?php 
+                $birthday = $row['birthday'];
+                $age = (date('Y') - date('Y',strtotime($birthday)));
+                echo $age; 
+                ?>
               </td>
-              <td>                 
-                <?php echo $row['startdate']; ?>
+              <td>
+                <?php 
+                if ($row['status'] == 'active') :
+                  echo '<strong style="color: green">'.$row['status']. '</strong>';
+                elseif ($row['status'] == 'inactive') :
+                    echo '<strong style="color: red">'.$row['status']. '</strong>';
+                endif;
+                ?>
               </td>
-              <td>                 
-                <?php echo $row['enddate']; ?>
-              </td>
+              <td><?php echo $row['enddate']; ?></td>
               <td>
                 <form action="/modules/modifyMember.php" method="post" class="membersActions">
                   <input type="hidden" name="status" value="<?php echo $row['status']; ?>">

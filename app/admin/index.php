@@ -59,6 +59,10 @@ $result = mysqli_query($conn, $sql);
               <th>Last Name</th>
               <th>Email</th>
               <th>Mobile</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>City</th>
+              <td>Timezone</td>
               <th>Creation date</th>
               <th>Status</th>
               <th>Membership<br>Type</th>
@@ -79,12 +83,16 @@ $result = mysqli_query($conn, $sql);
                     <?php echo $row['email']; ?>
                   </a>
                 </td>
-                <td><?php echo $row['mobile']; ?></th>
-                <td><?php echo $row['createdate']; ?></th>
-                <td><?php echo $row['status']; ?></th>
-                <td><?php echo $row['type']; ?></th>
-                <td><?php echo $row['startdate']; ?></th>
-                <td><?php echo $row['enddate']; ?></th>
+                <td><?php echo $row['mobile']; ?></td>
+                <td><?php echo $row['gender']; ?></td>
+                <td><?php $today = date('Y-m-d'); $birthday = $row['birthday']; $age = $today->diff($birthday); echo $age; ?></td>
+                <td><?php echo $row['city']; ?></td>
+                <td><?php echo $row['timezone']; ?></td>
+                <td><?php echo $row['createdate']; ?></td>
+                <td><?php echo $row['status']; ?></td>
+                <td><?php echo $row['type']; ?></td>
+                <td><?php echo $row['startdate']; ?></td>
+                <td><?php echo $row['enddate']; ?></td>
                 <td>
                   <form action="/modules/modifyCoach.php" method="post" class="membersActions">
                     <input type="hidden" name="status" value="<?php echo $row['status']; ?>">
